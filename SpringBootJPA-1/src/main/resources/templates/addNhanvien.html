@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Add a new employee</title>
+    <link th:insert="resources/linkCSS.html" />
+</head>
+<body>
+    <header th:include="header/menu.html"></header>
+    <article>
+    	<div class="container-fluid">
+    		<div class="row justify-content-md-center mt-1">
+    			<div class="col-md-6">
+    				<form action="#" th:action="@{/add-nhanvien}" th:object="${nhanvien}" method="post">
+    					<div class="form-group">
+    						<label for="fullname">FULLNAME</label>
+    						<input type="text" class="form-control" th:field="*{fullname}" id="fullname">
+    					</div>
+    					<div class="form-group">
+    						<label for="age">AGE</label>
+    						<input type="number" class="form-control" th:field="*{age}" id="age">
+    					</div>
+    					<div class="form-group">
+    						<label for="phone">PHONE</label>
+    						<input type="text" class="form-control" th:field="*{phone}" id="phone">
+    					</div>
+					    <button type="submit" class="btn btn-outline-success">Add new employee</button>
+					    <button type="reset" class="btn btn-outline-success">Reset</button>
+					    <a th:href="@{/}" class="text-success" >Click here to comeback home!</a>
+					</form>
+    			</div>
+    		</div>
+    	</div>
+    </article>
+	<script type="text/javascript" th:replace="resources/linkJS.html"></script>
+</body>
+</html>

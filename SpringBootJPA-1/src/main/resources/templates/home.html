@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Home</title>
+    <link th:insert="resources/linkCSS.html" />
+</head>
+<body>
+	<header th:include="header/menu.html"></header>
+    <article>
+    	<div class="container-fluid">
+    		<div class="row justify-content-md-center mt-1">
+    			<div class="col-md-12">
+    				<div class="card border-success">
+					  <h5 class="card-header border-success text-success">List Of Employees</h5>
+					  <div class="card-body">
+					    <div class="table-responsive">
+					    	<table class="table table-bordered table-hover bg-light">
+						    	<thead>
+						    		<tr class="table-success">
+						    			<th>ID</th>
+						    			<th>FULLNAME</th>
+						    			<th>AGE</th>
+						    			<th>PHONE</th>
+						    			<th>FEATURE</th>
+						    		</tr>
+						    	</thead>
+						    	<tbody>
+						    		<tr th:each="nhanvien: ${listNhanvien}">
+									    <td th:text="${nhanvien.id}" />
+									    <td>
+									    	<a th:href="@{/edit-nhanvien/} + ${nhanvien.id}" th:text="${nhanvien.fullname}" class="text-success" ></a>
+									    </td>
+									    <td th:text="${nhanvien.age}" />
+									    <td th:text="${nhanvien.phone}" />
+									    <td>
+									    	<a th:href="@{/delete-nhanvien/} + ${nhanvien.id}" class="btn btn-outline-success btn-sm" >Delete</a>
+									    </td>
+									</tr>
+						    	</tbody>
+						    </table>
+					    </div>
+					  </div>
+					</div>
+    			</div>
+    		</div>
+    	</div>
+    </article>
+    <script type="text/javascript" th:replace="resources/linkJS.html"></script>
+</body>
+</html>
